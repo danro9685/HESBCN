@@ -36,5 +36,3 @@ To account for model changes, we move precompute "parent lift" arrays and store 
 We resolve deadlock by using the parent lifts to modify the expectation computation and a designated "locked_out" function to test for lockout. Multiple end states are accounted for through genetic completion, and by considering only genotypes with events present into each event's expectation. 
 
 We also use the "is_after" function to determine whether two genotypes lie on the same lineage path, and if so, which comes first. This is integral to proper lineage comparisons. 
-
-For evaluation purposes, we include the true network structure for each underlying network in the file adj_matrix.txt. We then run the EM with the true poset to estimate the true values (only works for noise free, otherwise need to manually put in the values). 
