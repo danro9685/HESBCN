@@ -1,4 +1,4 @@
-H-ESBCN (Hidden Extended Suppes-Bayes Causal Network)
+H-ESBCNs (Hidden Extended Suppes-Bayes Causal Networks)
 ===============================
 
 We implement a C program intended for inferring relationships between cancer mutation events, given an input dataset. Those relationships are depicted in an Extended Suppes-Bayes Causal Network. Furthermore, the method also estimates an HMM to describe survival times. 
