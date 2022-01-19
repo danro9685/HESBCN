@@ -5,7 +5,8 @@
 # Modified by Kevin Chen, June 2016
 
 # It is likely that default C compiler is already gcc, but be explicit anyway
-CC = gcc-5
+#CC = gcc-5
+CC = gcc
 
 # The CFLAGS variable sets the flags for the compiler.  CS107 adds these flags:
 #  -g          compile with debug information
@@ -20,7 +21,8 @@ export warnflags = -Wfloat-equal -Wtype-limits -Wpointer-arith -Wlogical-op -Wsh
 # additional libraries being linked. The standard libc is linked by default.
 #  -lgsl			link GNU Science library (on Mac OSX, do not need to link math library as well)
 LDFLAGS = -lgsl
-LDLIBS = 
+#LDLIBS = 
+LDLIBS = -lgsl -lm -lgslcblas
 
 # Configure build tools to emit code for IA32 architecture by adding the necessary
 # flag to compiler and linker
