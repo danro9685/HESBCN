@@ -5,6 +5,7 @@
 #include <math.h>
 #include <float.h>
 
+#include "getline.h"
 #include "model.h"
 #include "matrix.h"
 #include "h-esbcn.h"

@@ -43,7 +43,7 @@ all:: $(PROGRAMS)
 
 # The entry below is a pattern rule. It defines the general recipe to make
 # the 'name.o' object file by compiling the 'name.c' source file.
-%.o: %.c %.h mcmc.h a-queue.h h-esbcn.h model.h data.h markov.h matrix.h likelihood_computation.c
+%.o: %.c %.h getline.h mcmc.h a-queue.h h-esbcn.h model.h data.h markov.h matrix.h likelihood_computation.c
 	$(COMPILE.c) $< -o $@
 # cbn_SOURCES = mcmc.h a-queue.h cbn.h model.h data.h 
 
