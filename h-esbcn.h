@@ -17,6 +17,7 @@
 #include <omp.h>
 #include <math.h>
 
+#include "getline.h"
 #include "matrix.h"
 #include "model.h"
 #include "data.h"
@@ -190,6 +191,15 @@ int count_edges(int** poset, int n) {
 	return count;
 }
 
+void remove_spaces(char* s) {
+    char* d = s;
+    do {
+        while (*d == ' ') {
+            ++d;
+        }
+    } while ((*s++ = *d++));
+}
+
 // TODO: reconsider the use of int* ptr vector here. We've changed the idea, and we're no longer looking
 // at the probability of combined events. Instead, using the current poset to determine how children
 // are valid or not in find_children_extended. 
@@ -201,11 +211,17 @@ int count_edges(int** poset, int n) {
  */
 int** read_patterns(FILE *input, model* M, char* filename, int* num_samples, int* num_events) {
 	size_t temp = 0;
-	int n;
+	int n = 0;
 	char* line = NULL; 
 	int len = getline(&line, &temp, input);
+	remove_spaces(line);
 	if (len != -1) {
-		n = len / 2;
+		char *ptr = line;
+		while((ptr = strchr(ptr, ',')) != NULL) {
+		    n++;
+		    ptr++;
+		}
+		n++;
 		free(line);
 		line = NULL;
 		rewind(input);
@@ -221,6 +237,7 @@ int** read_patterns(FILE *input, model* M, char* filename, int* num_samples, int
 	while (getline(&line, &temp, input) != -1) {
 		int line_index = 0;
 		int* genotype = get_int_array(n);
+		remove_spaces(line);
 		for (int i = 0; i< n; i++) { // fill in each event with genotype.
 			if (line[line_index] == '0') genotype[i] = 0;
 			if (line[line_index] == '1') genotype[i] = 1;
